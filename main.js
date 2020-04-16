@@ -20,9 +20,13 @@ var _diameter = 0;
 
 var _count = 0;
 function setup() {
-  createCanvas(600, 400);
+  var canvas_root_element = document.getElementsByClassName("canvasContainer");
+  //alert(canvas_root_element);
+  createCanvas(screen.width, screen.height);
   video = createCapture(VIDEO);
   video.size(width, height);
+
+  canvas.setAttribute("style", "position: fixed; top: 0%; left: 0%; height: auto; width: 100%;");
 
   // Create a new poseNet method with a single detection
   poseNet = ml5.poseNet(video, modelReady);
@@ -47,7 +51,7 @@ function modelReady() {
 }
 
 function draw() {
-
+  //resize();
   requestAnimFrame();
   image(video, 0, 0, width, height);
   // We can call both functions to draw all keypoints and the skeletons
@@ -57,6 +61,26 @@ function draw() {
   drawVaild();
   drawFPS();
 
+}
+
+function resize() {
+  // 브라우저에서 canvas가 표시되는 크기 탐색
+  canvas.clientWidth = screen.width;
+  canvas.clientHeight = screen.height;
+
+  var displayWidth  = canvas.clientWidth;
+  var displayHeight = canvas.clientHeight;
+ 
+  // canvas가 같은 크기가 아닐 때 확인
+  if (canvas.width  != displayWidth ||
+      canvas.height != displayHeight) {
+ 
+    // canvas를 동일한 크기로 수정
+    canvas.width  = displayWidth;
+    canvas.height = displayHeight;
+    video.size(screen.width, screen.height);
+    console.log("screen:" + screen.width  + "," + screen.height );
+  }
 }
 
 function drawFaceOverlay() {
