@@ -22,13 +22,23 @@ var _count = 0;
 function setup() {
   var canvas_root_element = document.getElementsByClassName("canvasContainer");
   //alert(canvas_root_element);
-  alert(screen.width);
-  alert(screen.height);
-  createCanvas(screen.width/2, screen.height/2);
+  // 412 840
+  // 1280 720
+  // alert(screen.width);
+  // alert(screen.height);
+  var target_width = 1280/2; // screen.width
+  var target_height = 720/2; // screen.height
+  createCanvas(target_width, target_height);
   video = createCapture(VIDEO);
   video.size(width, height);
 
-  canvas.setAttribute("style", "position: fixed; top: 0%; left: 0%; height: auto; width: 100%;");
+  if (screen.width > screen.height) {
+    canvas.setAttribute("style", "position: fixed; top: 0%; left: 0%; height: auto; width: 100%;");
+  }
+  else
+  {
+    canvas.setAttribute("style", "position: fixed; top: 0%; left: 0%; height: 100%; width: auto;");
+  }
 
   // Create a new poseNet method with a single detection
   poseNet = ml5.poseNet(video, modelReady);
@@ -129,25 +139,6 @@ function drawFPS() {
 
 // A function to draw ellipses over the detected keypoints
 function drawKeypoints()  {
-  /*
-  0	nose
-  1	leftEye
-  2	rightEye
-  3	leftEar
-  4	rightEar
-  5	leftShoulder
-  6	rightShoulder
-  7	leftElbow
-  8	rightElbow
-  9	leftWrist
-  10	rightWrist
-  11	leftHip
-  12	rightHip
-  13	leftKnee
-  14	rightKnee
-  15	leftAnkle
-  16	rightAnkle
-*/
   // Loop through all the poses detected
   //console.log("post coubt:" + poses.length);
   //_faceSize = 0;
@@ -194,8 +185,6 @@ function drawSkeleton() {
       let partB = skeleton[j][1];
       
       line(partA.position.x, partA.position.y, partB.position.x, partB.position.y);
-
-
     }
   //}
 }
@@ -230,12 +219,6 @@ function drawVaild() {
     var pose_name = key.split(',');
     vaild_skeleton(pose[pose_name[0]], pose[pose_name[1]], value);
   }
-
-  // vaild_skeleton(pose["leftElbow"], pose["leftShoulder"], 274);
-  // vaild_skeleton(pose["leftElbow"], pose["leftWrist"], 235);
-
-  // vaild_skeleton(pose["rightElbow"], pose["rightShoulder"], 94);
-  // vaild_skeleton(pose["rightElbow"], pose["rightWrist"], 48);
 }
 
 function vaild_skeleton(partA, partB, goal_angle) {
