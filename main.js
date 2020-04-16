@@ -22,7 +22,9 @@ var _count = 0;
 function setup() {
   var canvas_root_element = document.getElementsByClassName("canvasContainer");
   //alert(canvas_root_element);
-  createCanvas(screen.width, screen.height);
+  alert(screen.width);
+  alert(screen.height);
+  createCanvas(screen.width/2, screen.height/2);
   video = createCapture(VIDEO);
   video.size(width, height);
 
