@@ -32,13 +32,13 @@ function setup() {
   video = createCapture(VIDEO);
   video.size(width, height);
 
-  if (screen.width > screen.height) {
+//  if (screen.width > screen.height) {
     canvas.setAttribute("style", "position: fixed; top: 0%; left: 0%; height: auto; width: 100%;");
-  }
-  else
-  {
-    canvas.setAttribute("style", "position: fixed; top: 0%; left: 0%; height: 100%; width: auto;");
-  }
+//  }
+//  else
+//  {
+//    canvas.setAttribute("style", "position: fixed; top: 0%; left: 0%; height: 100%; width: auto;");
+//  }
 
   // Create a new poseNet method with a single detection
   poseNet = ml5.poseNet(video, modelReady);
