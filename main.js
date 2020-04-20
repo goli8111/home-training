@@ -26,12 +26,15 @@ function setup() {
   // 1280 720
   // alert(screen.width);
   // alert(screen.height);
-  var target_width = 1280/2; // screen.width
-  var target_height = 720/2; // screen.height
-  createCanvas(target_width, target_height);
-  video = createCapture(VIDEO);
-  video.size(width, height);
 
+  video = createCapture(VIDEO);
+  console.log(video);
+
+  var target_width = video.width; // screen.width
+  var target_height = video.height; // screen.height
+  createCanvas(target_width, target_height);
+
+  //video.size(width, height);
 //  if (screen.width > screen.height) {
     canvas.setAttribute("style", "position: fixed; top: 0%; left: 0%; height: auto; width: 100%;");
 //  }
