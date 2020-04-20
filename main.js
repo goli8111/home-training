@@ -31,8 +31,8 @@ function setup() {
   //console.log(video);
 
   // 화면 사이즈의 1/3로 렌더링
-  var target_width = video.width/5; // screen.width
-  var target_height = video.height/5; // screen.height
+  var target_width = video.width/2; // screen.width
+  var target_height = video.height/2; // screen.height
   createCanvas(target_width, target_height);
 
  canvas.setAttribute("style", "position: fixed; top: 0%; left: 0%; z-index: 2;");
