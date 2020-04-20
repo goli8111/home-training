@@ -35,7 +35,7 @@ function setup() {
   var target_height = video.height/5; // screen.height
   createCanvas(target_width, target_height);
 
- //canvas.setAttribute("style", "position: fixed; top: 0%; left: 0%; z-index: 1;");
+ canvas.setAttribute("style", "position: fixed; top: 0%; left: 0%; z-index: 2;");
   //video.size(width, height);
 //  if (screen.width > screen.height) {
     //canvas.setAttribute("style", "position: fixed; top: 0%; left: 0%; height: auto; width: 100%;");
