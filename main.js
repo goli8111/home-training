@@ -28,15 +28,17 @@ function setup() {
   // alert(screen.height);
 
   video = createCapture(VIDEO);
-  console.log(video);
+  //console.log(video);
 
-  var target_width = video.width; // screen.width
-  var target_height = video.height; // screen.height
+  // 화면 사이즈의 1/3로 렌더링
+  var target_width = video.width/5; // screen.width
+  var target_height = video.height/5; // screen.height
   createCanvas(target_width, target_height);
 
+ //canvas.setAttribute("style", "position: fixed; top: 0%; left: 0%; z-index: 1;");
   //video.size(width, height);
 //  if (screen.width > screen.height) {
-    canvas.setAttribute("style", "position: fixed; top: 0%; left: 0%; height: auto; width: 100%;");
+    //canvas.setAttribute("style", "position: fixed; top: 0%; left: 0%; height: auto; width: 100%;");
 //  }
 //  else
 //  {
@@ -67,14 +69,14 @@ function modelReady() {
 
 function draw() {
   //resize();
-  requestAnimFrame();
+  //requestAnimFrame();
   image(video, 0, 0, width, height);
   // We can call both functions to draw all keypoints and the skeletons
-  drawKeypoints();
-  //drawFaceOverlay();
-  drawSkeleton();
-  drawVaild();
-  drawFPS();
+  // drawKeypoints();
+  // //drawFaceOverlay();
+  // drawSkeleton();
+  // drawVaild();
+  // drawFPS();
 
 }
 
